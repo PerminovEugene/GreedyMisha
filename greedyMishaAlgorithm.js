@@ -3,21 +3,21 @@ GreedyMishaAlgorithm.prototype.start = function(inputArray) {
     try {
         var minimalNumber = stringToDecimal(inputArray[0]);
         var binarySum = decimalToBinary(minimalNumber);
-        var summWithoutMinimal = 0;
+        var sumWithoutMinimal = 0;
         var item = 0;
         for (var i = 1; i < inputArray.length; i++) {
             item = stringToDecimal(inputArray[i]);
             binarySum = binarySum ^ decimalToBinary(item);
             minimalNumber = getMinimalNumber(minimalNumber, inputArray[i]);
             if (minimalNumber > item) {
-                summWithoutMinimal += minimalNumber;
+                sumWithoutMinimal += minimalNumber;
                 minimalNumber = item;
             } else {
-                summWithoutMinimal += item
+                sumWithoutMinimal += item
             }
         }
         if (binarySum === 0) {
-            return summWithoutMinimal;
+            return sumWithoutMinimal;
         } else {
             return false;
         }
