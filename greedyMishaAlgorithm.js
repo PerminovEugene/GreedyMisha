@@ -51,20 +51,5 @@ var getMinimalNumber = function(a, b) {
         throw ex;
     }
 };
-// TODO move it to first cycle.
-var findSumWithoutMinimalElement = function (array, minimalNumber) {
-    var sum = 0;
-    var minimalNumberPassed = false;
-    for (var i = 1; i < array.length; i++) {
-        if (array[i] !== minimalNumber) {
-            if (minimalNumberPassed == false) {
-                sum += parseInt(array[i]);
-            }
-        } else {
-            minimalNumberPassed = true;
-        }
-    }
-    return sum;
-};
 
 module.exports.GreedyMishaAlgorithm = GreedyMishaAlgorithm;
