@@ -9,6 +9,7 @@ var RESULT_BASIC_STRING = "Case #";
 var ENCODING = "utf8";
 var DEFAULT_FILE_IN_PATH = "./in.txt";
 var DEFAULT_FILE_OUT_PATH = "./out.txt";
+var MAX_ITEMS_IN_INPUT_SET = 100;
 
 
 function readFromFile(filePath, encoding) {
@@ -28,6 +29,9 @@ function preparationOfInputData(array) {
 
 function prepareInputArrayForAlgorithm(length, array) {
     try {
+        if (length > MAX_ITEMS_IN_INPUT_SET) {
+            throw "Maximum elements in input set must be less or equal then " + MAX_ITEMS_IN_INPUT_SET;
+        }
         var preparedArray;
         if (!array || !length) {
             throw("Exception for input data: length: " + length + " , array: " + array + ". length and elements must be integer numbers!");
@@ -54,6 +58,17 @@ function getResultStringPartForIteration(iteration, result) {
     return resultString;
 }
 
+var myArgs = process.argv.slice(2);
+// Add here functional for check arg, if 2 then it's 2 files. If more it's a new set for algorithm.
+var inputFile;
+var outputFile;
+if (myArgs.length == 0) {
+    inputFile = DEFAULT_FILE_IN_PATH;
+    outputFile = DEFAULT_FILE_OUT_PATH;
+} else {
+    inputFile = myArgs[0];
+    outputFile = myArgs[1];
+}
 
 var sourceFileString = readFromFile(DEFAULT_FILE_IN_PATH, ENCODING);
 var inputStrings = sourceFileString.split("\n");
