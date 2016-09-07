@@ -1,0 +1,5 @@
+Case #1: 11
+Case #2: NO
+Case #3: 3
+Case #5: 3
+Case #6: 0
