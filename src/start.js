@@ -25,13 +25,11 @@ var algorithmTestsCount = inputStrings[NUMBER_OF_TESTS_STRING_INDEX];
 
 function prepareInputArrayForAlgorithm(length, array) {
     try {
-        var preparedArray = [];
-        if (!array || array.length < length) {
+        var preparedArray;
+        if (!array || !length || array.length < length) {
             throw("Exception for input data: length: " + length + " , array: " + array + ". Array must contain minimum " + length + " numbers.");
         } else {
-            for (var i = 0; i < array.length; i++) {
-                preparedArray.push(array[i])
-            }
+            preparedArray = array.split(" ");
             return preparedArray;
         }
     } catch (ex) {
